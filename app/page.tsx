@@ -58,7 +58,7 @@ export default function Home() {
                   <button 
                     key={aba}
                     onClick={() => setAbaFilmes(aba)}
-                    className={`${abaFilmes === aba ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-400'} text-[10px] font-black uppercase pb-1 tracking-widest transition-all flex items-center gap-1`}
+                    className={`${abaFilmes === aba ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-400'} text-[10px] font-black uppercase pb-1 tracking-widest transition-colors duration-150 ease-in-out`}
                   >
                     {aba === 'alta' && <span className="text-orange-500">🔥</span>}
                     {aba.replace('vistos', 'mais vistos').replace('alta', 'em alta')}
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SEÇÃO DE SÉRIES (Com botão Em Alta 🔥) */}
+        {/* SEÇÃO DE SÉRIES */}
         <section>
           <div className="flex items-center justify-between mb-6 bg-[#161b22] p-1 rounded-md border border-gray-800 shadow-xl">
             <div className="flex items-center">
@@ -93,7 +93,7 @@ export default function Home() {
                   <button 
                     key={aba}
                     onClick={() => setAbaSeries(aba)}
-                    className={`${abaSeries === aba ? 'text-blue-500 border-b-2 border-blue-500' : 'text-gray-400'} text-[10px] font-black uppercase pb-1 tracking-widest transition-all flex items-center gap-1`}
+                    className={`${abaSeries === aba ? 'text-blue-500 border-blue-500 border-b-2' : 'text-gray-400'} text-[10px] font-black uppercase pb-1 tracking-widest transition-colors duration-150 ease-in-out`}
                   >
                     {aba === 'alta' && <span className="text-orange-500">🔥</span>}
                     {aba.replace('novos', 'novos episódios').replace('vistas', 'mais vistas').replace('alta', 'em alta')}

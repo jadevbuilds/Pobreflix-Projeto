@@ -1,4 +1,5 @@
 "use client";
+import { useState } from 'react';
 import Link from 'next/link';
 
 interface NavbarProps {
@@ -6,21 +7,43 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onSearch }: NavbarProps) {
+  // Estado para controlar qual aba do menu está ativa
+  const [activeTab, setActiveTab] = useState('inicio');
+
+  const menuItems = [
+    { id: 'inicio', label: 'Início', href: '/' },
+    { id: 'filmes', label: 'Filmes', href: '#' },
+    { id: 'series', label: 'Séries', href: '#' },
+  ];
+
   return (
-    <nav className="bg-[#0b0e14] border-b border-gray-800 px-[5%] py-4">
+    <nav className="sticky top-0 z-50 bg-[#0b0e14]/90 backdrop-blur-md border-b border-gray-800 px-[5%] py-4">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-6"> {/* Título unido conforme solicitado */}
-          <Link href="/" className="text-3xl font-black tracking-tighter text-white uppercase italic leading-none">
+        
+        {/* LADO ESQUERDO: LOGO + MENU */}
+        <div className="flex items-center gap-16"> {/* Aumentado para gap-16 para separar bem do título */}
+          <Link href="/" translate="no" className="text-3xl font-black tracking-tighter text-white uppercase italic leading-none">
             POBRE<span className="text-blue-600">FLIX</span>
           </Link>
           
-          <div className="hidden md:flex gap-6 text-[10px] font-black uppercase tracking-widest text-gray-400">
-            <Link href="/" className="hover:text-white transition-colors">Início</Link>
-            <Link href="#" className="hover:text-white transition-colors">Filmes</Link>
-            <Link href="#" className="hover:text-white transition-colors">Séries</Link>
+          <div translate="no" className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-widest">
+            {menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`transition-all pb-1 border-b-2 ${
+                  activeTab === item.id 
+                    ? 'text-blue-500 border-blue-500' 
+                    : 'text-gray-400 border-transparent hover:text-white'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
 
+        {/* LADO DIREITO: BUSCA */}
         <div className="relative w-64">
           <input 
             type="text" 

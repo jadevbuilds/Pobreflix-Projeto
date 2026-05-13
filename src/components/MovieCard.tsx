@@ -27,9 +27,9 @@ export const MovieCard = ({ title, image, year, duration }: MovieProps) => {
 
       {/* Info do Filme */}
       <div className="p-3">
-        <h3 className="text-white text-xs font-bold truncate group-hover:text-blue-500 transition-colors">
-          {title}
-        </h3>
+         <h3 translate="no" className="mt-2 text-[11px] font-bold text-gray-200 truncate group-hover:text-blue-500 transition-colors">
+              {title}
+         </h3>
         <div className="flex gap-2 mt-1">
           <span className="text-gray-500 text-[10px]">{year}</span>
           <span className="text-gray-500 text-[10px]">•</span>
