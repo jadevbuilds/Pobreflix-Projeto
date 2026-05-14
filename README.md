@@ -20,9 +20,11 @@ Este projeto foi construído utilizando o que há de mais moderno no ecossistema
 * **Totalmente Responsivo:** Adaptado para celulares, tablets e computadores.
 * **Categorização:** Seções separadas para Filmes Online e Séries Online.
 
-## 📸 Preview do Projeto
+## 📺 Preview do Projeto
 
-*(Dica: Você pode colocar um print do seu site aqui para chamar mais atenção!)*
+Você pode acessar a versão final do projeto hospedada na Vercel através do link abaixo:
+
+🔗 **[Acessar Pobreflix Online](https://pobreflix-projeto.vercel.app/)**
 
 ---
 
@@ -30,4 +32,4 @@ Este projeto foi construído utilizando o que há de mais moderno no ecossistema
 
 1. **Clone este repositório:**
    ```bash
-   git clone [https://github.com/seu-usuario/pobreflix-next.git](https://github.com/seu-usuario/pobreflix-next.git)
+   git clone [https://github.com/jadevbuilds/Projeto-Pobreflix.git](https://github.com/jadevbuilds/Projeto-Pobreflix.git)
