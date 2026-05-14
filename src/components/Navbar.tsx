@@ -15,10 +15,9 @@ interface NavbarProps {
 }
 
 export default function Navbar({ onSearch }: NavbarProps) {
-  const [activeTab, setActiveTab] = useState('inicio');
+  const [activeTab, setActiveTab] = useState('filmes');
 
   const menuItems = [
-    { id: 'inicio', label: 'Início', href: '/' },
     { id: 'filmes', label: 'Filmes', href: '#' },
     { id: 'series', label: 'Séries', href: '#' },
     { id: 'animes', label: 'Animes', href: '#' },
@@ -30,14 +29,13 @@ export default function Navbar({ onSearch }: NavbarProps) {
         
         {/* LADO ESQUERDO: LOGO + MENU */}
         <div className="flex items-center gap-20">
-          {/* APLICAÇÃO DA FONTE AQUI */}
-<Link 
-  href="/" 
-  translate="no" 
-  className={`${bebasNeue.className} text-[45px] font-normal tracking-[1px] text-white uppercase leading-none inline-block scale-y-110`}
->
-  POBRE<span className="text-blue-600">FLIX</span>
-</Link>
+          <Link 
+            href="/" 
+            translate="no" 
+            className={`${bebasNeue.className} text-[45px] font-normal tracking-[1px] text-white uppercase leading-none inline-block scale-y-110`}
+          >
+            POBRE<span className="text-blue-600">FLIX</span>
+          </Link>
           
           <div translate="no" className="hidden md:flex gap-10 text-[14px] font-black uppercase tracking-widest">
             {menuItems.map((item) => (
@@ -45,13 +43,9 @@ export default function Navbar({ onSearch }: NavbarProps) {
                 key={item.id}
                 onClick={() => {
                   setActiveTab(item.id);
-                  if (item.id === 'inicio') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  } else {
-                    const section = document.getElementById(item.id);
-                    if (section) {
-                      section.scrollIntoView({ behavior: 'smooth' });
-                    }
+                  const section = document.getElementById(item.id);
+                  if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
                 className={`transition-all pb-2 border-b-2 ${
