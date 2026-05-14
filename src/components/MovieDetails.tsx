@@ -2,17 +2,14 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 
-// Definimos a interface de forma clara
 interface MovieDetailsProps {
   obra: any;
   onClose: () => void;
 }
 
-// Usamos export default para facilitar a importação no page.tsx
 export default function MovieDetails({ obra, onClose }: MovieDetailsProps) {
   
   useEffect(() => {
-    // Bloqueia o scroll do fundo quando o modal abre
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'unset';
@@ -59,8 +56,10 @@ export default function MovieDetails({ obra, onClose }: MovieDetailsProps) {
           </button>
         </div>
 
-        {/* CONTEÚDO COM NO-SCROLLBAR */}
+        {/* CONTEÚDO */}
         <div className="p-6 space-y-8 overflow-y-auto max-h-[85vh] no-scrollbar">
+          
+          {/* TRAILER */}
           {obra.trailerId && (
             <div className="relative pt-[56.25%] w-full overflow-hidden rounded-lg border border-gray-800 shadow-lg bg-black">
               <iframe
@@ -76,16 +75,63 @@ export default function MovieDetails({ obra, onClose }: MovieDetailsProps) {
             <div className="space-y-4">
               <h3 className="text-blue-500 font-black uppercase text-sm tracking-[4px]">Sinopse</h3>
               <p className="text-gray-200 leading-relaxed text-lg italic border-l-4 border-blue-600 pl-6">
-                {obra.sinopse || "Sinopse ainda não disponível."}
+                {obra.sinopse || "Sinopse ainda não disponível para esta obra."}
               </p>
             </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-8 border-t border-gray-800/50">
+              <div>
+                <span className="block text-xs text-gray-500 uppercase font-black tracking-[3px] mb-2">Autor / Estúdio</span>
+                <span className="text-white text-lg font-bold uppercase tracking-wider">{obra.autor || "Não informado"}</span>
+              </div>
+              <div>
+                <span className="block text-xs text-gray-500 uppercase font-black tracking-[3px] mb-2">Ano de Lançamento</span>
+                <span className="text-white text-lg font-bold uppercase tracking-wider">{obra.year}</span>
+              </div>
+            </div>
 
-            {/* BOTÃO ASSISTIR AGORA SEM BARRA DE SCROLL */}
-            <div className="pt-6 flex justify-center pb-4">
+            {/* --- NOVO BLOCO: ONDE ASSISTIR --- */}
+            {obra.ondeAssistir && (
+              <div className="pt-8 border-t border-gray-800/50">
+                <span className="block text-xs text-blue-500 uppercase font-black tracking-[3px] mb-4">Disponível em:</span>
+                
+                <a 
+                  href={obra.ondeAssistir.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-4 bg-[#101824] hover:bg-[#16202d] border border-gray-700 p-3 rounded-lg transition-all group"
+                >
+                  {/* Espaço para a Logo da Plataforma */}
+                  <div className="w-10 h-10 bg-white rounded flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={obra.ondeAssistir.logo || "https://cdn-icons-png.flaticon.com/512/732/732228.png"} 
+                      alt={obra.ondeAssistir.nome} 
+                      className="w-8 h-8 object-contain"
+                    />
+                  </div>
+                  
+                  <div className="flex flex-col pr-4">
+                    <span className="text-gray-400 text-[10px] uppercase font-bold tracking-wider">Assista agora na</span>
+                    <span className="text-white text-base font-black uppercase italic group-hover:text-blue-400 transition-colors">
+                      {obra.ondeAssistir.nome}
+                    </span>
+                  </div>
+
+                  <div className="text-gray-600 group-hover:text-blue-500 group-hover:translate-x-1 transition-all">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            )}
+
+            {/* BOTÃO ASSISTIR AGORA */}
+            <div className="pt-4 flex justify-center pb-6">
               <Link 
                 href={`/watch/${encodeURIComponent(obra.title)}`}
                 onClick={onClose}
-                className="w-full md:w-80 bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-3 shadow-lg shadow-blue-900/20 cursor-pointer"
+                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 shadow-lg shadow-blue-900/20 cursor-pointer"
               >
                 <span className="text-xl">▶</span>
                 <span className="uppercase tracking-[3px] text-lg italic font-bold">Assistir Agora</span>
