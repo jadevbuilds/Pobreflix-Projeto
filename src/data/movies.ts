@@ -51,7 +51,7 @@ export const DATA = {
       views: 300, 
       lancamento: false, 
       trailerId: "EXeTwQWrcwY",
-      videoUrl: "https://www.youtube.com/embed/EXeTwQWrcwY?autoplay=1", 
+      videoUrl: "https://embed.warezcdn.com/video/tt0468569", 
       autor: "Christopher Nolan | DC & Warner Bros.", 
       sinopse: "Com a ajuda de Jim Gordon e Harvey Dent, Batman mantém a ordem em Gotham. No entanto, o surgimento do Coringa, um mestre do crime anarquista, mergulha a cidade no caos. O Cavaleiro das Trevas terá que questionar seus próprios princípios para deter um vilão que só quer ver o mundo arder.",
       ondeAssistir: {
@@ -728,7 +728,7 @@ export const DATA = {
       title: "Boku no Hero", 
       image: "/bokunohero.jpg", 
       year: "2016", 
-      duration: "7 Temporadas", 
+      duration: "8 Temporadas", 
       rating: "8.3",
       genres: ["Animação", "Ação", "Ficção Científica"],
       emAlta: true, 

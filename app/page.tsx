@@ -13,7 +13,6 @@ export default function Home() {
   const [abaFilmes, setAbaFilmes] = useState('todos');
   const [abaSeries, setAbaSeries] = useState('todos');
   const [abaAnimes, setAbaAnimes] = useState('todos');
-  const MovieDetailsComponent = MovieDetails as ComponentType<{ obra: any; onClose: () => void }>;
 
   const carrosselFilmes = useRef<HTMLDivElement>(null);
   const carrosselSeries = useRef<HTMLDivElement>(null);
@@ -23,28 +22,13 @@ export default function Home() {
     let filtrados = lista.filter(item => item.title.toLowerCase().includes(busca.toLowerCase()));
     
     switch (abaAtiva) {
-      case 'todos': 
-        filtrados = [...filtrados].sort((a, b) => a.title.localeCompare(b.title)); 
-        break;
-      
-      case 'recentes': 
-        // ORDENAÇÃO POR ADIÇÃO: Pega os últimos adicionados no arquivo movies.ts e coloca primeiro
-        filtrados = [...filtrados].reverse(); 
-        break;
-      
-      case 'alta': 
-        filtrados = filtrados.filter(item => item.emAlta); 
-        break;
-      
+      case 'todos': filtrados = [...filtrados].sort((a, b) => a.title.localeCompare(b.title)); break;
+      case 'recentes': filtrados = [...filtrados].reverse(); break;
+      case 'alta': filtrados = filtrados.filter(item => item.emAlta); break;
       case 'novos':
-      case 'lancamentos': 
-        filtrados = filtrados.filter(item => item.lancamento || item.novoEp); 
-        break;
-      
+      case 'lancamentos': filtrados = filtrados.filter(item => item.lancamento || item.novoEp); break;
       case 'vistas':
-      case 'vistos': 
-        filtrados = [...filtrados].sort((a, b) => (b.views || 0) - (a.views || 0)); 
-        break;
+      case 'vistos': filtrados = [...filtrados].sort((a, b) => (b.views || 0) - (a.views || 0)); break;
     }
     return filtrados;
   };
@@ -102,18 +86,32 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="flex gap-2 pr-4">
-                <button onClick={() => scroll(secao.ref, 'left')} className="bg-[#0b0e14] w-12 h-12 flex items-center justify-center rounded border border-gray-800 text-gray-400 hover:text-white transition-all">❮</button>
-                <button onClick={() => scroll(secao.ref, 'right')} className="bg-[#0b0e14] w-12 h-12 flex items-center justify-center rounded border border-gray-800 text-gray-400 hover:text-white transition-all">❯</button>
+              {/* ESTILO DOS BOTÕES MANTIDO E MELHORADO */}
+                <div className="flex gap-2 pr-4">
+                <button 
+                  onClick={() => scroll(secao.ref, 'left')} 
+                  className="bg-[#0b0e14] w-12 h-12 flex items-center justify-center rounded border border-gray-800 text-gray-400 hover:text-white transition-all cursor-pointer hover:scale-110 active:scale-95"
+                >
+                  ❮
+                </button>
+                <button 
+                  onClick={() => scroll(secao.ref, 'right')} 
+                  className="bg-[#0b0e14] w-12 h-12 flex items-center justify-center rounded border border-gray-800 text-gray-400 hover:text-white transition-all cursor-pointer hover:scale-110 active:scale-95"
+                >
+                  ❯
+                </button>
               </div>
             </div>
             
-            <div ref={secao.ref} className="flex overflow-x-auto gap-8 scroll-smooth pb-5 no-scrollbar min-h-[350px] items-start">
+            <div 
+              ref={secao.ref} 
+              className="flex overflow-x-auto gap-8 no-scrollbar pb-5 px-2"
+            >
               {filtrarConteudo(secao.data, secao.aba).map((item, i) => (
                 <div 
                   key={i} 
                   onClick={() => setObraSelecionada(item)} 
-                  className="w-[220px] flex-shrink-0 transition-transform hover:scale-105 cursor-pointer"
+                  className="w-[220px] flex-shrink-0 transition-transform duration-300 hover:scale-105 cursor-pointer snap-item"
                 >
                   <MovieCard {...item} />
                 </div>

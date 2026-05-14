@@ -57,7 +57,7 @@ export default function WatchPage({ params }: { params: Promise<{ title: string 
           </div>
         </div>
 
-        {/* PLAYER CORRIGIDO */}
+         {/* O SEU PLAYER DO FILME AQUI */}
         <div className="bg-black rounded-2xl border border-gray-800 shadow-2xl overflow-hidden aspect-video relative border-b-4 border-b-blue-600">
           <iframe 
             src={linkFinal} 
