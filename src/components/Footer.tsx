@@ -33,7 +33,6 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold uppercase text-xs tracking-widest mb-6">Navegação</h4>
             <ul className="space-y-4 text-gray-600 text-sm">
-              <li><Link href="/" className="hover:text-blue-500 transition-colors">Início</Link></li>
               <li><Link href="#" className="hover:text-blue-500 transition-colors">Filmes</Link></li>
               <li><Link href="#" className="hover:text-blue-500 transition-colors">Séries</Link></li>
               <li><Link href="#" className="hover:text-blue-500 transition-colors">Animes</Link></li>
@@ -50,7 +49,7 @@ export default function Footer() {
               <li><Link href="#" className="hover:text-blue-500 transition-colors">Contato</Link></li>
             </ul>
           </div>
-          
+
         </div>
 
         {/* BARRA INFERIOR DO RODAPÉ */}
